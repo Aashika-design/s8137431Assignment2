@@ -1,10 +1,12 @@
 package com.aashika.assignment2.ui.dashboard
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aashika.assignment2.R
 import com.aashika.assignment2.data.model.Movie
 import com.aashika.assignment2.databinding.ItemMovieBinding
 
@@ -26,9 +28,14 @@ class MovieAdapter(
         private val onMovieClick: (Movie) -> Unit
     ) : RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(movie: Movie) {
             binding.textTitle.text = movie.title
-            binding.textDirectorGenre.text = "${movie.director} • ${movie.genre}"
+            binding.textDirectorGenre.text = binding.root.context.getString(
+                R.string.movie_director_genre,
+                movie.director,
+                movie.genre
+            )
             binding.textYear.text = movie.releaseYear.toString()
             binding.root.setOnClickListener { onMovieClick(movie) }
         }

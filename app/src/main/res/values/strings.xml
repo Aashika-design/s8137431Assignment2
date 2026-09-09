@@ -18,8 +18,8 @@
     <string name="details_title">Movie Details</string>
     <string name="label_director">Director</string>
     <string name="label_genre">Genre</string>
-    <string name="label_release_year">Release Year</string>
     <string name="label_description">Description</string>
+    <string name="movie_director_genre">%1$s • %2$s</string>
 
     <string name="error_generic">Something went wrong. Please try again.</string>
     <string name="error_network">Couldn\'t reach the server. Check your connection and try again.</string>
