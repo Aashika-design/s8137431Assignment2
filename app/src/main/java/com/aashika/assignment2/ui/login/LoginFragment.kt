@@ -9,6 +9,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.core.widget.doAfterTextChanged
 import androidx.navigation.fragment.findNavController
 import com.aashika.assignment2.R
 import com.aashika.assignment2.databinding.FragmentLoginBinding
@@ -40,6 +41,8 @@ class LoginFragment : Fragment() {
             val password = binding.editPassword.text?.toString().orEmpty()
             viewModel.onLoginClicked(username, password)
         }
+        binding.editUsername.doAfterTextChanged { viewModel.clearError() }
+        binding.editPassword.doAfterTextChanged { viewModel.clearError() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {

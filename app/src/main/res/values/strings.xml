@@ -12,7 +12,8 @@
 
     <string name="dashboard_title">Movies</string>
     <string name="dashboard_empty">No movies found</string>
-    <string name="dashboard_error">Couldn\'t load movies. Pull down to try again.</string>
+    <string name="dashboard_error">Couldn\'t load movies.</string>
+    <string name="action_retry">Retry</string>
 
     <string name="details_title">Movie Details</string>
     <string name="label_director">Director</string>

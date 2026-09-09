@@ -38,6 +38,7 @@ class DashboardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.recyclerMovies.adapter = movieAdapter
+        binding.buttonRetry.setOnClickListener { viewModel.loadMovies() }
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
@@ -57,6 +58,7 @@ class DashboardFragment : Fragment() {
         }
         binding.textEmptyOrError.text = message
         binding.textEmptyOrError.visibility = if (message != null) View.VISIBLE else View.GONE
+        binding.buttonRetry.visibility = if (state.error != null) View.VISIBLE else View.GONE
         binding.recyclerMovies.visibility =
             if (message == null && !state.isLoading) View.VISIBLE else View.GONE
     }

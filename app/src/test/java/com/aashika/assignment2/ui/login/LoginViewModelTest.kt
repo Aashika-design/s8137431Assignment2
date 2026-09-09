@@ -87,4 +87,16 @@ class LoginViewModelTest {
 
         assertEquals(LoginError.Network, viewModel.uiState.value.error)
     }
+
+    @Test
+    fun `clearError resets a previously shown error`() = runTest {
+        val viewModel = LoginViewModel(authRepository)
+
+        viewModel.onLoginClicked(username = "", password = "Aashika")
+        assertEquals(LoginError.EmptyUsername, viewModel.uiState.value.error)
+
+        viewModel.clearError()
+
+        assertNull(viewModel.uiState.value.error)
+    }
 }

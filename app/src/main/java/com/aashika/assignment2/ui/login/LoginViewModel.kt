@@ -27,6 +27,12 @@ class LoginViewModel @Inject constructor(
     private val _navigateToDashboard = MutableSharedFlow<String>()
     val navigateToDashboard: SharedFlow<String> = _navigateToDashboard.asSharedFlow()
 
+    fun clearError() {
+        if (_uiState.value.error != null) {
+            _uiState.update { it.copy(error = null) }
+        }
+    }
+
     fun onLoginClicked(username: String, password: String) {
         when {
             username.isBlank() -> _uiState.update { it.copy(error = LoginError.EmptyUsername) }
