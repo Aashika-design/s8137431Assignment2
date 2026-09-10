@@ -40,15 +40,22 @@ app/src/test/java/com/aashika/assignment2/
 
 ## Tech stack
 
-Kotlin 2.4, AGP 9.4 with built-in Kotlin support (no separate `kotlin-android` plugin), KSP,
+Kotlin 2.4, AGP 9.3 with built-in Kotlin support (no separate `kotlin-android` plugin), KSP,
 Hilt, Retrofit 3 + OkHttp, Navigation Component with Safe Args, and JUnit4 + MockK +
 kotlinx-coroutines-test for ViewModel tests.
 
 ## Building and running
 
-**Requirements**: Android Studio with JDK 17+ (a bundled JDK works — the project was built and
-tested here against Eclipse Temurin 25), and an internet connection the first time you build
-(Gradle 9.7.1 and all dependencies are downloaded automatically).
+**Requirements**: a recent Android Studio release with JDK 17+ (a bundled JDK works — the
+project was built and tested here against Eclipse Temurin 25), and an internet connection the
+first time you build (Gradle 9.7.1 and all dependencies are downloaded automatically).
+
+> **AGP/Android Studio compatibility**: this project pins the Android Gradle Plugin version in
+> `gradle/libs.versions.toml` (`[versions] agp = ...`). AGP 9.x is very new, and each Android
+> Studio release only supports AGP versions up to whatever shipped with it — if Gradle sync
+> fails with an "incompatible AGP version" error naming a lower supported version, lower the
+> `agp` value in `gradle/libs.versions.toml` to match (Android Studio's own error message
+> tells you the exact version to use) and re-sync.
 
 1. Clone the repository and open the project root in Android Studio.
 2. Let Gradle sync; on first sync it will download the Gradle 9.7.1 distribution, the Android
@@ -69,9 +76,9 @@ From the command line instead:
 ./gradlew testDebugUnitTest
 ```
 
-This runs the `LoginViewModelTest` and `DashboardViewModelTest` suites (8 tests) covering
-field validation, the login-success navigation event, error-type mapping, and the dashboard
-retry flow.
+This runs the `LoginViewModelTest` and `DashboardViewModelTest` suites (9 tests) covering
+field validation, the login-success navigation event, error-type mapping, error clearing, and
+the dashboard retry flow.
 
 ## Notes
 
