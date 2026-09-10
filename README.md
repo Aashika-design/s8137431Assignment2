@@ -70,6 +70,12 @@ From the command line instead:
 ./gradlew installDebug    # install it on a connected device/emulator
 ```
 
+**Windows**: this is a plain Gradle/Android Studio project with no OS-specific code or paths,
+so it opens and runs the same way on Windows — use the included `gradlew.bat` instead of
+`./gradlew` for the command-line steps above (e.g. `gradlew.bat assembleDebug`). Android
+Studio itself resolves the SDK location (`local.properties`) per machine automatically, so no
+project changes are needed between macOS/Linux and Windows.
+
 ## Running the tests
 
 ```bash
